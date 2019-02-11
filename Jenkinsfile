@@ -41,9 +41,9 @@ pipeline {
 	    
 	    stage('Deploy_container_Dev'){
             steps {
-		    def dockerRun = 'docker run -p 8080:8080 -d --name webapp rddevops/webapp:2.0.0'
+		    def dockerRun = 'docker run -p 8080:8080 -d --name webapp rddevops5/webapp:2.0.0'
                 sshagent(['dev-serv']) {
-			sh "ssh -o StrictHostKeyChecking=no -l cloudbees root@192.168.56.101 ${dockerRun}"
+			sh "ssh -o StrictHostKeyChecking=no root@192.168.56.101 ${dockerRun}"
     // some block
 			}
             }
