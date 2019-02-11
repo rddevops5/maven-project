@@ -38,6 +38,22 @@ pipeline {
                 }
             }
         }
+	    
+	    stage('docker-push'){
+            steps {
+		    def dockerRun = 'docker run -p 8080:8080 -d --name webapp rddevops/webapp:2.0.0'
+                sshagent(['dev-serv']) {
+			sh "ssh -o StrictHostKeyChecking=no -l cloudbees root@192.168.56.101 ${dockerRun}"
+    // some block
+			}
+            }
+            post {
+                success {
+                    echo 'Docker push successful'
+                    
+                }
+            }
+        }
 	      
     }
 }
