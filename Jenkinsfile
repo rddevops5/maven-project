@@ -49,7 +49,7 @@ pipeline {
             steps {
 	           
 		    sshagent(['dev-serv']) {
-			sh "ssh -o StrictHostKeyChecking=no root@192.168.56.101 ${docRun}"
+			sh "ssh -o StrictHostKeyChecking=no root@192.168.0.53 ${docRun}"
     // some block
 			}
             }
