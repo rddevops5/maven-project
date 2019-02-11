@@ -39,7 +39,7 @@ pipeline {
             }
         }
 	    
-	    stage('docker-push'){
+	    stage('Deploy_container_Dev'){
             steps {
 		    def dockerRun = 'docker run -p 8080:8080 -d --name webapp rddevops/webapp:2.0.0'
                 sshagent(['dev-serv']) {
