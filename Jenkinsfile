@@ -12,6 +12,10 @@ pipeline {
                 }
             }
         }
-       
+        stage('Docker-build'){
+          sh '''
+            docker build -t rddevops5/webapp:2.0.0 .
+          '''
+       }
     }
 }
