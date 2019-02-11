@@ -43,7 +43,7 @@ pipeline {
 	    
 	    stage('Deploy_container_Dev'){
 		    environment { 
-			    //docRun  = "docker run -p 8080:8080 -d --name webapp rddevops5/webapp:2.0.0"
+			    docRun  = "docker run -p 8080:8080 -d --name webapp rddevops5/webapp:2.0.0"
             }
 		    
 	     
