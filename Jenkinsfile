@@ -12,13 +12,24 @@ pipeline {
                 }
             }
         }
-	    stage('docker'){
+	    stage('docker-build'){
             steps {
                 sh 'docker build -t rddevops5/webapp:2.0.0 .'
             }
             post {
                 success {
                     echo 'Docker build successful'
+                    
+                }
+            }
+        }
+	    stage('docker-push'){
+            steps {
+                sh 'docker push rddevops5/webapp:2.0.0 .'
+            }
+            post {
+                success {
+                    echo 'Docker push successful'
                     
                 }
             }
