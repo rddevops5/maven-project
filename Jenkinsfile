@@ -29,7 +29,7 @@ pipeline {
 			  sh "docker login -u rddevops5 -p ${dockerhubpsswd}"  // some block
                 }
 
-                sh 'docker push rddevops5/webapp:2.0.0 .'
+                sh 'docker push rddevops5/webapp:2.0.0'
             }
             post {
                 success {
