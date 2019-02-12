@@ -60,6 +60,7 @@ pipeline {
                 }
             }
         }
+	    }
 		    
 		    stage('Deploy_container_Dev2'){
 		    
