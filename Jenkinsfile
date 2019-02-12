@@ -35,7 +35,7 @@ pipeline {
             post {
                 success {
                     echo 'Docker push successful'
-			sh "ssh ip172-18-0-21-bhgl3cj0mkfg009anhrg@direct.labs.play-with-docker.com docker run -p 8080:8080 -d --name webapp rddevops5/webapp:2.0.0"
+			//sh "ssh ip172-18-0-21-bhgl3cj0mkfg009anhrg@direct.labs.play-with-docker.com docker run -p 8080:8080 -d --name webapp rddevops5/webapp:2.0.0"
                     
                 }
             }
@@ -50,7 +50,7 @@ pipeline {
             steps {
 	           
 		    sshagent(['dev-serv']) {
-			//sh "ssh -o StrictHostKeyChecking=no root@192.168.0.53 ${docRun}"
+	          sh "ssh -o StrictHostKeyChecking=no root@192.168.56.105 ${docRun}"
     // some block
 			}
             }
