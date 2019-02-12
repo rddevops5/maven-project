@@ -42,6 +42,27 @@ pipeline {
         }
 	    
 	    stage('Deploy_container_Dev'){
+		    withCredentials([[$class: 'UsernamePasswordMultiBinding', credentialsId: 'dev-serv',
+                    usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD']]) {
+		    environment { 
+			    docRun  = "docker run -p 8080:8080 -d --name webapp rddevops5/webapp:2.0.0"
+            }
+		    
+	     
+            steps {
+	           
+		    sh "ssh -o StrictHostKeyChecking=no root@192.168.56.105 ${docRun}"
+            }
+            post {
+                success {
+                    echo 'Docker push successful'
+                    
+                }
+            }
+        }
+		    
+		    stage('Deploy_container_Dev2'){
+		    
 		    environment { 
 			    docRun  = "docker run -p 8080:8080 -d --name webapp rddevops5/webapp:2.0.0"
             }
